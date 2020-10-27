@@ -1,0 +1,57 @@
+<h1>Registration</h1>
+
+
+<form [formGroup]="formRegister" (submit)="onRegisterSubmit()">
+    <!-- Username -->
+    <div class="form-group"> 
+        <label for="username">Username</label>
+        <div>
+            <input [ngClass]="{'is-invalid': formRegister.controls.username.errors && (formRegister.controls.username.touched || formRegister.controls.username.dirty),
+                               'is-valid': !formRegister.controls.username.errors }"
+                class="form-control " type="text" name="usernamer" placeholder="*Username" formControlName="username">
+        </div>
+        <div *ngIf="formRegister.controls.username.errors?.required && formRegister.controls.username.dirty" >Ce champ est requis</div>
+        <div *ngIf="(formRegister.controls.username.errors?.minlength || formRegister.controls.username.errors?.maxlength )
+                     && formRegister.controls.username.dirty">Le nom d'utilisateur est compris entre 5 et 30 caractéres</div>
+    </div>
+
+            
+        
+    <!-- Email-->
+    <div class="form-group has-error">    
+        <label for="email">email</label>
+        <div>
+            <input [ngClass]="{'is-invalid': formRegister.controls.email.errors && (formRegister.controls.email.touched || formRegister.controls.email.dirty),
+                               'is-valid': !formRegister.controls.email.errors }"
+                class="form-control  " type="text" name="email" placeholder="*email" formControlName="email">
+        </div>
+        
+    </div>
+    <!-- Password-->
+    <div class="form-group">
+        <label for="password">password</label>
+        <div>
+            <input class="form-control" type="text" name="password" placeholder="*password" formControlName="password">
+        </div>
+    </div>
+    <!-- Password confirm -->
+    <div class="form-group">
+        <label for="confirm-password">confirm-password</label>
+        <div>
+            <input class="form-control" type="text" name="confirm" placeholder="*confirm-password"
+                formControlName="confirm">
+        </div>
+    </div>
+    <!-- Submit Button-->
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit" [disabled]=formRegister.invalid>Submit</button>
+    </div>
+</form>
+
+
+<h3>testing</h3>
+
+<p><span>username.touched()</span>: {{ formRegister.controls.username.touched }}</p> 
+<p><span>username.errors </span>: {{ formRegister.get('username').errors }}</p> 
+<p><span>username.DIRTY </span>: {{ formRegister.get('username').dirty }}</p> 
+<p><span>username.value </span>: {{ formRegister.get('username').value }}</p> 
