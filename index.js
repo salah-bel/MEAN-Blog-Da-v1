@@ -8,7 +8,7 @@ const authentication = require('./routes/authentication')(router)
 const bodyParser = require('body-parser')
 
 //DataBase
-// Pour éviter tout les  deprecation warnings de mongoose :
+// Pour éviter tout les  depreciation warnings de mongoose :
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
